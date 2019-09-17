@@ -1,5 +1,11 @@
 #!/usr/bin/bash
-SCRATCH=$(mktemp --directory)
 HOME=$(pwd)
-mv $@ $SCRATCH
-~       
+SCRATCH=$(mktemp --directory)
+cp -r "$@" "$SCRATCH"
+cd "$SCRATCH"
+for f in ./* do
+	if [ -x "$f" ]; then
+		tar -xvf $f.tar.gz
+	fi
+done
+
