@@ -30,7 +30,7 @@ teardown() {
   BATS_TMPDIR=$(mktemp --directory)
   sort test/summary_plots.html > "$BATS_TMPDIR"/target.txt
   sort failed_login_summary.html > "$BATS_TMPDIR"/sorted.txt
-  run diff -wbB "$BATS_TMPDIR"/target.txt "$BATS_TMPDIR"/sorted.txt
+  diff -wbB "$BATS_TMPDIR"/target.txt "$BATS_TMPDIR"/sorted.txt
   rm -rf "$BATS_TMPDIR"
   [ "$status" -eq 0 ]
 }
